@@ -7,8 +7,8 @@ namespace _99Bottles
     {
         public static string Recite(int bottleCount) =>
             Lyrics
-                .Split(Environment.NewLine)
-                .Skip((99 - bottleCount) * 3)
+                .Split(separator: Environment.NewLine)
+                .Skip(count: (99 - bottleCount) * 3)
                 .Join(separator: Environment.NewLine);
 
         public static readonly string Lyrics =
