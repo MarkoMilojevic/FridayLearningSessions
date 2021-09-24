@@ -13,7 +13,7 @@ namespace _99Bottles.UnitTest
 @"No more bottles of milk on the wall, no more bottles of milk.
 Go to the store and buy some more, 99 bottles of milk on the wall.";
 
-            string actualNoBottleLyrics = Song.Recite(0);
+            string actualNoBottleLyrics = Song.Recite(bottleCount: 0);
 
             Assert.Equal(expectedNoBottleLyrics, actualNoBottleLyrics);
         }
@@ -28,7 +28,7 @@ Take it down and pass it around, no more bottles of milk on the wall.
 No more bottles of milk on the wall, no more bottles of milk.
 Go to the store and buy some more, 99 bottles of milk on the wall.";
 
-            string actualOneBottleLyrics = Song.Recite(1);
+            string actualOneBottleLyrics = Song.Recite(bottleCount: 1);
 
             Assert.Equal(expectedOneBottleLyrics, actualOneBottleLyrics);
         }
@@ -46,7 +46,7 @@ Take it down and pass it around, no more bottles of milk on the wall.
 No more bottles of milk on the wall, no more bottles of milk.
 Go to the store and buy some more, 99 bottles of milk on the wall.";
 
-            string actualTwoBottlesLyrics = Song.Recite(2);
+            string actualTwoBottlesLyrics = Song.Recite(bottleCount: 2);
 
             Assert.Equal(expectedTwoBottlesLyrics, actualTwoBottlesLyrics);
         }
@@ -67,7 +67,7 @@ Take it down and pass it around, no more bottles of milk on the wall.
 No more bottles of milk on the wall, no more bottles of milk.
 Go to the store and buy some more, 99 bottles of milk on the wall.";
 
-            string actualThreeBottlesLyrics = Song.Recite(3);
+            string actualThreeBottlesLyrics = Song.Recite(bottleCount: 3);
 
             Assert.Equal(expectedThreeBottlesLyrics, actualThreeBottlesLyrics);
         }
@@ -77,7 +77,7 @@ Go to the store and buy some more, 99 bottles of milk on the wall.";
         {
             string expected99BottlesLyrics = File.ReadAllText("song.txt");
 
-            string actual99BottlesLyrics = Song.Recite(99);
+            string actual99BottlesLyrics = Song.Recite(bottleCount: 99);
 
             Assert.Equal(expected99BottlesLyrics, actual99BottlesLyrics);
         }
