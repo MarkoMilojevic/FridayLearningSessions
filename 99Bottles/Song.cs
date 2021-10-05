@@ -14,16 +14,9 @@ namespace _99Bottles
 
         public static string Verses(int startingBottleCount, int endingBottleCount)
         {
-            if (startingBottleCount > Song.MaxBottleCount || startingBottleCount < 0)
-                throw new ArgumentOutOfRangeException(paramName: nameof(startingBottleCount));
-
-            if (endingBottleCount > Song.MaxBottleCount || endingBottleCount < 0)
-                throw new ArgumentOutOfRangeException(paramName: nameof(endingBottleCount));
-
-            if (endingBottleCount > startingBottleCount)
-                throw new ArgumentException(
-                    message: $"'{nameof(endingBottleCount)}' cannot be greater than '{nameof(startingBottleCount)}'.",
-                    paramName: nameof(endingBottleCount));
+            Song.ValidateBottleCount(startingBottleCount);
+            Song.ValidateBottleCount(endingBottleCount);
+            Song.ValidateBottlesRange(startingBottleCount, endingBottleCount);
 
             return Verses(startingBottleCount: startingBottleCount)
                 .Take((startingBottleCount - endingBottleCount + 1) * 3 - 1)
@@ -32,12 +25,25 @@ namespace _99Bottles
 
         public static string Verse(int bottleCount)
         {
-            if (bottleCount > Song.MaxBottleCount || bottleCount < 0)
-                throw new ArgumentOutOfRangeException(paramName: nameof(bottleCount));
+            Song.ValidateBottleCount(bottleCount);
 
             return Verses(startingBottleCount: bottleCount)
                 .Take(Song.SingleVerseLinesCount)
                 .Join(separator: Environment.NewLine);
+        }
+
+        private static void ValidateBottleCount(int bottleCount)
+        {
+            if (bottleCount > Song.MaxBottleCount || bottleCount < 0)
+                throw new ArgumentOutOfRangeException(paramName: nameof(bottleCount));
+        }
+
+        private static void ValidateBottlesRange(int startingBottleCount, int endingBottleCount)
+        {
+            if (endingBottleCount > startingBottleCount)
+                throw new ArgumentException(
+                    message: $"'{nameof(endingBottleCount)}' cannot be greater than '{nameof(startingBottleCount)}'.",
+                    paramName: nameof(endingBottleCount));
         }
 
         private static IEnumerable<string> Verses(int startingBottleCount) =>
