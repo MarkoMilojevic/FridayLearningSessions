@@ -205,7 +205,7 @@ Take one down and pass it around, 5 bottles of milk on the wall.";
         {
             string expected99BottlesLyrics = File.ReadAllText("song-original.txt");
 
-            string actual99BottlesLyrics = ASong().Recite();
+            string actual99BottlesLyrics = OriginalSong().Recite();
 
             Assert.Equal(expected99BottlesLyrics, actual99BottlesLyrics);
         }
