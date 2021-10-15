@@ -19,7 +19,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="song.txt">
+    <None Update="song-sixpack.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="song-original.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

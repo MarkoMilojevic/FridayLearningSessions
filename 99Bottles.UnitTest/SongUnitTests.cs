@@ -9,12 +9,12 @@ namespace _99Bottles.UnitTest
         [Fact]
         public void Verse_ThrowsWhenBottleCountHigherThanMaxBottles() =>
             Assert.Throws<ArgumentOutOfRangeException>(
-                testCode: () => Song.CreateOriginal().Verse(bottleCount: Song.MaxBottleCount + 1));
+                testCode: () => ASong().Verse(bottleCount: Song.MaxBottleCount + 1));
 
         [Fact]
         public void Verse_ThrowsWhenBottleCountLowerThanZero() =>
             Assert.Throws<ArgumentOutOfRangeException>(
-                testCode: () => Song.CreateOriginal().Verse(bottleCount: -1));
+                testCode: () => ASong().Verse(bottleCount: -1));
 
         [Fact]
         public void Verse_NoMoreBottles()
@@ -23,7 +23,7 @@ namespace _99Bottles.UnitTest
 @"No more bottles of milk on the wall, no more bottles of milk.
 Go to the store and buy some more, 99 bottles of milk on the wall.";
 
-            string actualNoBottleLyrics = Song.CreateOriginal().Verse(bottleCount: 0);
+            string actualNoBottleLyrics = ASong().Verse(bottleCount: 0);
 
             Assert.Equal(expectedNoBottleLyrics, actualNoBottleLyrics);
         }
@@ -35,7 +35,7 @@ Go to the store and buy some more, 99 bottles of milk on the wall.";
 @"1 bottle of milk on the wall, 1 bottle of milk.
 Take it down and pass it around, no more bottles of milk on the wall.";
 
-            string actualOneBottleLyrics = Song.CreateOriginal().Verse(bottleCount: 1);
+            string actualOneBottleLyrics = ASong().Verse(bottleCount: 1);
 
             Assert.Equal(expectedOneBottleLyrics, actualOneBottleLyrics);
         }
@@ -47,7 +47,7 @@ Take it down and pass it around, no more bottles of milk on the wall.";
 @"2 bottles of milk on the wall, 2 bottles of milk.
 Take one down and pass it around, 1 bottle of milk on the wall.";
 
-            string actualTwoBottlesLyrics = Song.CreateOriginal().Verse(bottleCount: 2);
+            string actualTwoBottlesLyrics = ASong().Verse(bottleCount: 2);
 
             Assert.Equal(expectedTwoBottlesLyrics, actualTwoBottlesLyrics);
         }
@@ -59,7 +59,7 @@ Take one down and pass it around, 1 bottle of milk on the wall.";
 @"3 bottles of milk on the wall, 3 bottles of milk.
 Take one down and pass it around, 2 bottles of milk on the wall.";
 
-            string actualThreeBottlesLyrics = Song.CreateOriginal().Verse(bottleCount: 3);
+            string actualThreeBottlesLyrics = ASong().Verse(bottleCount: 3);
 
             Assert.Equal(expectedThreeBottlesLyrics, actualThreeBottlesLyrics);
         }
@@ -67,27 +67,27 @@ Take one down and pass it around, 2 bottles of milk on the wall.";
         [Fact]
         public void Verses_ThrowsWhenStartingBottleCountHigherThanMaxBottles() =>
             Assert.Throws<ArgumentOutOfRangeException>(
-                testCode: () => Song.CreateOriginal().Verses(startingBottleCount: Song.MaxBottleCount + 1, endingBottleCount: 0));
+                testCode: () => ASong().Verses(startingBottleCount: Song.MaxBottleCount + 1, endingBottleCount: 0));
 
         [Fact]
         public void Verses_ThrowsWhenStartingBottleCountLowerThanZero() =>
             Assert.Throws<ArgumentOutOfRangeException>(
-                testCode: () => Song.CreateOriginal().Verses(startingBottleCount: -1, endingBottleCount: 0));
+                testCode: () => ASong().Verses(startingBottleCount: -1, endingBottleCount: 0));
 
         [Fact]
         public void Verses_ThrowsWhenEndingBottleCountHigherThanMaxBottles() =>
             Assert.Throws<ArgumentOutOfRangeException>(
-                testCode: () => Song.CreateOriginal().Verses(startingBottleCount: Song.MaxBottleCount, endingBottleCount: Song.MaxBottleCount + 1));
+                testCode: () => ASong().Verses(startingBottleCount: Song.MaxBottleCount, endingBottleCount: Song.MaxBottleCount + 1));
 
         [Fact]
         public void Verses_ThrowsWhenEndingBottleCountLowerThanZero() =>
             Assert.Throws<ArgumentOutOfRangeException>(
-                testCode: () => Song.CreateOriginal().Verses(startingBottleCount: Song.MaxBottleCount + 1, endingBottleCount: -1));
+                testCode: () => ASong().Verses(startingBottleCount: Song.MaxBottleCount + 1, endingBottleCount: -1));
 
         [Fact]
         public void Verses_ThrowsWhenEndingBottleCountHigherThanStartingBottleCount() =>
             Assert.Throws<ArgumentException>(
-                testCode: () => Song.CreateOriginal().Verses(startingBottleCount: 0, endingBottleCount: Song.MaxBottleCount));
+                testCode: () => ASong().Verses(startingBottleCount: 0, endingBottleCount: Song.MaxBottleCount));
 
         [Fact]
         public void Verses_OneThroughZeroBottles()
@@ -100,7 +100,7 @@ No more bottles of milk on the wall, no more bottles of milk.
 Go to the store and buy some more, 99 bottles of milk on the wall.";
 
             string actualOneThroughZeroBottleLyrics =
-                Song.CreateOriginal().Verses(startingBottleCount: 1, endingBottleCount: 0);
+                ASong().Verses(startingBottleCount: 1, endingBottleCount: 0);
 
             Assert.Equal(expectedOneThroughZeroBottleLyrics, actualOneThroughZeroBottleLyrics);
         }
@@ -119,7 +119,7 @@ No more bottles of milk on the wall, no more bottles of milk.
 Go to the store and buy some more, 99 bottles of milk on the wall.";
 
             string actualTwoThroughZeroBottlesLyrics =
-                Song.CreateOriginal().Verses(startingBottleCount: 2, endingBottleCount: 0);
+                ASong().Verses(startingBottleCount: 2, endingBottleCount: 0);
 
             Assert.Equal(expectedTwoThroughZeroBottlesLyrics, actualTwoThroughZeroBottlesLyrics);
         }
@@ -141,7 +141,7 @@ No more bottles of milk on the wall, no more bottles of milk.
 Go to the store and buy some more, 99 bottles of milk on the wall.";
 
             string actualThreeThroughZeroBottlesLyrics =
-                Song.CreateOriginal().Verses(startingBottleCount: 3, endingBottleCount: 0);
+                ASong().Verses(startingBottleCount: 3, endingBottleCount: 0);
 
             Assert.Equal(expectedThreeThroughZeroBottlesLyrics, actualThreeThroughZeroBottlesLyrics);
         }
@@ -163,19 +163,70 @@ Take one down and pass it around, 1 bottle of milk on the wall.
 Take it down and pass it around, no more bottles of milk on the wall.";
 
             string actualFourThroughOneBottlesLyrics =
-                Song.CreateOriginal().Verses(startingBottleCount: 4, endingBottleCount: 1);
+                ASong().Verses(startingBottleCount: 4, endingBottleCount: 1);
 
             Assert.Equal(expectedFourThroughOneBottlesLyrics, actualFourThroughOneBottlesLyrics);
         }
 
         [Fact]
-        public void Recite()
+        public void Original_Verses_SevenThroughSixBottles()
         {
-            string expected99BottlesLyrics = File.ReadAllText("song.txt");
+            string expectedSevenThroughSixBottlesLyrics =
+@"7 bottles of milk on the wall, 7 bottles of milk.
+Take one down and pass it around, 6 bottles of milk on the wall.
 
-            string actual99BottlesLyrics = Song.CreateOriginal().Recite();
+6 bottles of milk on the wall, 6 bottles of milk.
+Take one down and pass it around, 5 bottles of milk on the wall.";
+
+            string actualSevenThroughSixBottlesLyrics =
+                OriginalSong().Verses(startingBottleCount: 7, endingBottleCount: 6);
+
+            Assert.Equal(expectedSevenThroughSixBottlesLyrics, actualSevenThroughSixBottlesLyrics);
+        }
+
+        [Fact]
+        public void SixPack_Verses_SevenThroughSixBottles()
+        {
+            string expectedSevenThroughSixBottlesLyrics =
+@"7 bottles of milk on the wall, 7 bottles of milk.
+Take one down and pass it around, 1 six-pack bottles of milk on the wall.
+
+1 six-pack bottles of milk on the wall, 1 six-pack bottles of milk.
+Take one down and pass it around, 5 bottles of milk on the wall.";
+
+            string actualSevenThroughSixBottlesLyrics =
+                SixPackSong().Verses(startingBottleCount: 7, endingBottleCount: 6);
+
+            Assert.Equal(expectedSevenThroughSixBottlesLyrics, actualSevenThroughSixBottlesLyrics);
+        }
+
+        [Fact]
+        public void Original_Recite()
+        {
+            string expected99BottlesLyrics = File.ReadAllText("song-original.txt");
+
+            string actual99BottlesLyrics = ASong().Recite();
 
             Assert.Equal(expected99BottlesLyrics, actual99BottlesLyrics);
         }
+
+        [Fact]
+        public void SixPack_Recite()
+        {
+            string expected99BottlesLyrics = File.ReadAllText("song-sixpack.txt");
+
+            string actual99BottlesLyrics = SixPackSong().Recite();
+
+            Assert.Equal(expected99BottlesLyrics, actual99BottlesLyrics);
+        }
+
+        private static Song ASong() =>
+            Song.CreateOriginal();
+
+        private static Song OriginalSong() =>
+            Song.CreateOriginal();
+
+        private static Song SixPackSong() =>
+            Song.CreateSixPack();
     }
 }

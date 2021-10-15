@@ -17,6 +17,9 @@ namespace _99Bottles
         public static Song CreateOriginal() =>
             new Song(SongLyrics.Original);
 
+        public static Song CreateSixPack() =>
+            new Song(SongLyrics.SixPack);
+
         public string Recite() =>
             this.Verses(startingBottleCount: Song.MaxBottleCount, endingBottleCount: 0);
 
