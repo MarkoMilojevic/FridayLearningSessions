@@ -25,9 +25,7 @@ namespace _99Bottles
 
         public string Verses(int startingBottleCount, int endingBottleCount)
         {
-            this.ValidateBottleCount(startingBottleCount);
-            this.ValidateBottleCount(endingBottleCount);
-            this.ValidateBottlesRange(startingBottleCount, endingBottleCount);
+            this.ValidateBottleCounts(startingBottleCount, endingBottleCount);
 
             return this.Verses(startingBottleCount: startingBottleCount)
                 .Take((startingBottleCount - endingBottleCount + 1) * 3 - 1)
@@ -43,23 +41,26 @@ namespace _99Bottles
                 .Join(separator: Environment.NewLine);
         }
 
+        private IEnumerable<string> Verses(int startingBottleCount) =>
+            this.Lyrics
+                .Split(separator: Environment.NewLine)
+                .Skip(count: (Song.MaxBottleCount - startingBottleCount) * 3);
+
         private void ValidateBottleCount(int bottleCount)
         {
             if (bottleCount > Song.MaxBottleCount || bottleCount < 0)
                 throw new ArgumentOutOfRangeException(paramName: nameof(bottleCount));
         }
 
-        private void ValidateBottlesRange(int startingBottleCount, int endingBottleCount)
+        private void ValidateBottleCounts(int startingBottleCount, int endingBottleCount)
         {
+            this.ValidateBottleCount(startingBottleCount);
+            this.ValidateBottleCount(endingBottleCount);
+
             if (endingBottleCount > startingBottleCount)
                 throw new ArgumentException(
                     message: $"'{nameof(endingBottleCount)}' cannot be greater than '{nameof(startingBottleCount)}'.",
                     paramName: nameof(endingBottleCount));
         }
-
-        private IEnumerable<string> Verses(int startingBottleCount) =>
-            this.Lyrics
-                .Split(separator: Environment.NewLine)
-                .Skip(count: (Song.MaxBottleCount - startingBottleCount) * 3);
     }
 }
