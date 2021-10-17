@@ -221,12 +221,12 @@ Take one down and pass it around, 5 bottles of milk on the wall.";
         }
 
         private static Song ASong() =>
-            Song.CreateOriginal();
+            new Song(SongLyrics.Original);
 
         private static Song OriginalSong() =>
-            Song.CreateOriginal();
+            new Song(SongLyrics.Original);
 
         private static Song SixPackSong() =>
-            Song.CreateSixPack();
+            new Song(SongLyrics.SixPack);
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace _99Bottles
 {
-    public static partial class SongLyrics
+    public static partial class SongLyricsConstants
     {
         public static readonly string Original =
 @"99 bottles of milk on the wall, 99 bottles of milk.

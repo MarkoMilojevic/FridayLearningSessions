@@ -9,23 +9,17 @@ namespace _99Bottles
         public const int MaxBottleCount = 99;
         private const int SingleVerseLinesCount = 2;
 
-        private string Lyrics { get; }
+        private SongLyrics SongLyrics { get; }
 
-        private Song(string lyrics) =>
-            this.Lyrics = lyrics;
-
-        public static Song CreateOriginal() =>
-            new Song(SongLyrics.Original);
-
-        public static Song CreateSixPack() =>
-            new Song(SongLyrics.SixPack);
+        public Song(SongLyrics songLyrics) =>
+            this.SongLyrics = songLyrics ?? throw new ArgumentNullException(nameof(songLyrics));
 
         public string Recite() =>
             this.Verses(startingBottleCount: Song.MaxBottleCount, endingBottleCount: 0);
 
         public string Verses(int startingBottleCount, int endingBottleCount)
         {
-            this.ValidateBottleCounts(startingBottleCount, endingBottleCount);
+            Song.ValidateBottleCounts(startingBottleCount, endingBottleCount);
 
             return this.Verses(startingBottleCount: startingBottleCount)
                 .Take((startingBottleCount - endingBottleCount + 1) * 3 - 1)
@@ -34,7 +28,7 @@ namespace _99Bottles
 
         public string Verse(int bottleCount)
         {
-            this.ValidateBottleCount(bottleCount);
+            Song.ValidateBottleCount(bottleCount);
 
             return this.Verses(startingBottleCount: bottleCount)
                 .Take(Song.SingleVerseLinesCount)
@@ -42,20 +36,21 @@ namespace _99Bottles
         }
 
         private IEnumerable<string> Verses(int startingBottleCount) =>
-            this.Lyrics
+            this.SongLyrics
+                .Text
                 .Split(separator: Environment.NewLine)
                 .Skip(count: (Song.MaxBottleCount - startingBottleCount) * 3);
 
-        private void ValidateBottleCount(int bottleCount)
+        private static void ValidateBottleCount(int bottleCount)
         {
             if (bottleCount > Song.MaxBottleCount || bottleCount < 0)
                 throw new ArgumentOutOfRangeException(paramName: nameof(bottleCount));
         }
 
-        private void ValidateBottleCounts(int startingBottleCount, int endingBottleCount)
+        private static void ValidateBottleCounts(int startingBottleCount, int endingBottleCount)
         {
-            this.ValidateBottleCount(startingBottleCount);
-            this.ValidateBottleCount(endingBottleCount);
+            Song.ValidateBottleCount(startingBottleCount);
+            Song.ValidateBottleCount(endingBottleCount);
 
             if (endingBottleCount > startingBottleCount)
                 throw new ArgumentException(
