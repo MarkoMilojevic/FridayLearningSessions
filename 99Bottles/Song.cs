@@ -15,7 +15,7 @@ namespace _99Bottles
             this.SongLyrics = songLyrics ?? throw new ArgumentNullException(nameof(songLyrics));
 
         public string Recite() =>
-            this.Verses(startingBottleCount: Song.MaxBottleCount, endingBottleCount: 0);
+            this.SongLyrics.Text;
 
         public string Verses(int startingBottleCount, int endingBottleCount)
         {
