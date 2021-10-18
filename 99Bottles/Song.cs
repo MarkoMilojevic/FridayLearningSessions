@@ -6,9 +6,6 @@ namespace _99Bottles
 {
     public class Song
     {
-        public const int MaxBottleCount = 99;
-        private const int SingleVerseLinesCount = 2;
-
         private SongLyrics SongLyrics { get; }
 
         public Song(SongLyrics songLyrics) =>
@@ -31,7 +28,7 @@ namespace _99Bottles
             Song.ValidateBottleCount(bottleCount);
 
             return this.Verses(startingBottleCount: bottleCount)
-                .Take(Song.SingleVerseLinesCount)
+                .Take(SongLyrics.SingleVerseLinesCount)
                 .Join(separator: Environment.NewLine);
         }
 
@@ -39,11 +36,11 @@ namespace _99Bottles
             this.SongLyrics
                 .Text
                 .Split(separator: Environment.NewLine)
-                .Skip(count: (Song.MaxBottleCount - startingBottleCount) * 3);
+                .Skip(count: (SongLyrics.MaxBottleCount - startingBottleCount) * 3);
 
         private static void ValidateBottleCount(int bottleCount)
         {
-            if (bottleCount > Song.MaxBottleCount || bottleCount < 0)
+            if (bottleCount > SongLyrics.MaxBottleCount || bottleCount < 0)
                 throw new ArgumentOutOfRangeException(paramName: nameof(bottleCount));
         }
 

@@ -2,6 +2,10 @@
 {
     public class SongLyrics
     {
+        public const int MaxBottleCount = 99;
+
+        public const int SingleVerseLinesCount = 2;
+
         public static readonly SongLyrics Original =
             new SongLyrics(SongLyricsConstants.Original);
 

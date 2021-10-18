@@ -9,7 +9,7 @@ namespace _99Bottles.UnitTest
         [Fact]
         public void Verse_ThrowsWhenBottleCountHigherThanMaxBottles() =>
             Assert.Throws<ArgumentOutOfRangeException>(
-                testCode: () => ASong().Verse(bottleCount: Song.MaxBottleCount + 1));
+                testCode: () => ASong().Verse(bottleCount: SongLyrics.MaxBottleCount + 1));
 
         [Fact]
         public void Verse_ThrowsWhenBottleCountLowerThanZero() =>
@@ -67,7 +67,7 @@ Take one down and pass it around, 2 bottles of milk on the wall.";
         [Fact]
         public void Verses_ThrowsWhenStartingBottleCountHigherThanMaxBottles() =>
             Assert.Throws<ArgumentOutOfRangeException>(
-                testCode: () => ASong().Verses(startingBottleCount: Song.MaxBottleCount + 1, endingBottleCount: 0));
+                testCode: () =>ASong().Verses(startingBottleCount: SongLyrics.MaxBottleCount + 1, endingBottleCount: 0));
 
         [Fact]
         public void Verses_ThrowsWhenStartingBottleCountLowerThanZero() =>
@@ -77,17 +77,20 @@ Take one down and pass it around, 2 bottles of milk on the wall.";
         [Fact]
         public void Verses_ThrowsWhenEndingBottleCountHigherThanMaxBottles() =>
             Assert.Throws<ArgumentOutOfRangeException>(
-                testCode: () => ASong().Verses(startingBottleCount: Song.MaxBottleCount, endingBottleCount: Song.MaxBottleCount + 1));
+                testCode: () =>
+                    ASong().Verses(
+                        startingBottleCount: SongLyrics.MaxBottleCount,
+                        endingBottleCount: SongLyrics.MaxBottleCount + 1));
 
         [Fact]
         public void Verses_ThrowsWhenEndingBottleCountLowerThanZero() =>
             Assert.Throws<ArgumentOutOfRangeException>(
-                testCode: () => ASong().Verses(startingBottleCount: Song.MaxBottleCount + 1, endingBottleCount: -1));
+                testCode: () => ASong().Verses(startingBottleCount: SongLyrics.MaxBottleCount, endingBottleCount: -1));
 
         [Fact]
         public void Verses_ThrowsWhenEndingBottleCountHigherThanStartingBottleCount() =>
             Assert.Throws<ArgumentException>(
-                testCode: () => ASong().Verses(startingBottleCount: 0, endingBottleCount: Song.MaxBottleCount));
+                testCode: () => ASong().Verses(startingBottleCount: 0, endingBottleCount: SongLyrics.MaxBottleCount));
 
         [Fact]
         public void Verses_OneThroughZeroBottles()
