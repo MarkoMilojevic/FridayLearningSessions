@@ -67,7 +67,7 @@ Take one down and pass it around, 2 bottles of milk on the wall.";
         [Fact]
         public void Verses_ThrowsWhenStartingBottleCountHigherThanMaxBottles() =>
             Assert.Throws<ArgumentOutOfRangeException>(
-                testCode: () =>ASong().Verses(startingBottleCount: SongLyrics.MaxBottleCount + 1, endingBottleCount: 0));
+                testCode: () => ASong().Verses(startingBottleCount: SongLyrics.MaxBottleCount + 1, endingBottleCount: 0));
 
         [Fact]
         public void Verses_ThrowsWhenStartingBottleCountLowerThanZero() =>
