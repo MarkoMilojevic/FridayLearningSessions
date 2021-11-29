@@ -1,22 +1,21 @@
-﻿namespace _99Bottles
+﻿namespace _99Bottles;
+
+public class SongLyrics
 {
-    public class SongLyrics
-    {
-        public const int MaxBottleCount = 99;
+    public const int MaxBottleCount = 99;
 
-        public const int SingleVerseLinesCount = 2;
+    public const int SingleVerseLinesCount = 2;
 
-        public static readonly SongLyrics Original =
-            new SongLyrics(SongLyricsConstants.Original);
+    public static readonly SongLyrics Original =
+        new SongLyrics(SongLyricsConstants.Original);
 
-        public static readonly SongLyrics SixPack =
-            new SongLyrics(SongLyricsConstants.SixPack);
+    public static readonly SongLyrics SixPack =
+        new SongLyrics(SongLyricsConstants.SixPack);
 
-        static SongLyrics() { }
+    static SongLyrics() { }
 
-        public string Text { get; }
+    public string Text { get; }
 
-        private SongLyrics(string text) =>
-            this.Text = text;
-    }
+    private SongLyrics(string text) =>
+        this.Text = text;
 }

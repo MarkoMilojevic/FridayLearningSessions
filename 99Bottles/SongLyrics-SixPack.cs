@@ -1,8 +1,8 @@
-﻿namespace _99Bottles
+﻿namespace _99Bottles;
+
+public static partial class SongLyricsConstants
 {
-    public static partial class SongLyricsConstants
-    {
-        public static readonly string SixPack =
+    public static readonly string SixPack =
 @"99 bottles of milk on the wall, 99 bottles of milk.
 Take one down and pass it around, 98 bottles of milk on the wall.
 
@@ -302,5 +302,4 @@ Take it down and pass it around, no more bottles of milk on the wall.
 
 No more bottles of milk on the wall, no more bottles of milk.
 Go to the store and buy some more, 99 bottles of milk on the wall.";
-    }
 }
